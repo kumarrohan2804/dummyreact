@@ -3,6 +3,10 @@ import Input from "../../UI/Input";
 import classes from "./MealItemForm.module.css";
 
 const MealItemForm = (props) => {
+  const [quantity, setQuantity] = React.useState(1);
+  const handleAdd = () => {
+    props.onAdd(quantity);
+  };
   return (
     <form className={classes.form}>
       <Input
@@ -15,8 +19,9 @@ const MealItemForm = (props) => {
           step: "1",
           defaultValue: "1",
         }}
+        changeQuantity={setQuantity}
       />
-      <button>+ Add</button>
+      <button onClick={handleAdd}>+ Add</button>
     </form>
   );
 };
